@@ -6,17 +6,20 @@ class User {
   }
 
   find() {
-    return this.query().select("id", "email");
+    return this.query().select("id", "displayName", "email");
   }
 
-  async create(user) {
-    const [id] = await this.query().insert(user, "id");
-
-    return this.findById(id);
+  create(user) {
+    return this.query()
+      .insert(user)
+      .then((ids) => this.findById(ids[0]));
   }
 
   findById(id) {
-    return this.query().where({ id }).first();
+    return this.query()
+      .where({ id })
+      .select("id", "displayName", "email")
+      .first();
   }
 }
 

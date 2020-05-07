@@ -9,7 +9,7 @@ router.post("/login", auth.login, (req, res) => {
   res.json({ message: `Successful login as ${req.session.user.displayName}.` });
 });
 
-router.get("logout", (req, res) => {
+router.get("/logout", (req, res) => {
   if (req.session) {
     req.session.destroy((err) => {
       if (err) {
