@@ -3,6 +3,7 @@
 module.exports = {
   development: {
     client: "sqlite3",
+    useNullAsDefault: true,
     connection: {
       filename: "./database/node-auth-1.db3",
     },

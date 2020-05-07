@@ -1,12 +1,12 @@
 const router = require("express").Router();
 const auth = require("./auth");
 
-router.post("/signup", auth.signup, (req, res) => {
+router.post("/register", auth.signup, (req, res) => {
   res.status(201).json(req.user);
 });
 
 router.post("/login", auth.login, (req, res) => {
-  res.json({ message: `Successful login as ${req.session.user.email}.` });
+  res.json({ message: `Successful login as ${req.session.user.displayName}.` });
 });
 
 router.get("logout", (req, res) => {

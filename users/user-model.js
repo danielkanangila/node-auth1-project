@@ -2,7 +2,7 @@ const db = require("../database/db-config");
 
 class User {
   query() {
-    return db("schemes");
+    return db("users");
   }
 
   find() {

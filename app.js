@@ -19,7 +19,7 @@ const sessionConfig = {
   resave: false,
   saveUninitialized: false,
   store: new KnexSessionStore({
-    knex: require("../database/db-config.js"), // configured instance of knex
+    knex: require("./database/db-config.js"), // configured instance of knex
     tablename: "sessions", // table that will store sessions inside the db, name it anything you want
     sidfieldname: "sid", // column that will hold the session id, name it anything you want
     createtable: true, // if the table does not exist, it will create it automatically
@@ -34,7 +34,7 @@ app.use(session(sessionConfig));
 app.use(helmet());
 app.use(cors());
 
-app.use("/auth", authRouter);
+app.use("/api", authRouter);
 app.use("/api/users", userRouter);
 
 module.exports = app;
